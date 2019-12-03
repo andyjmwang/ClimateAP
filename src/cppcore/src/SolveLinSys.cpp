@@ -560,7 +560,7 @@ py::tuple solveFK(Eigen::Ref<MatrixXdR> preLoadMat, Eigen::Ref<MatrixXdR> A, Eig
     /* Initialize Eigen's cg solver */
     Eigen::VectorXd XiEVector;
     Eigen::LeastSquaresConjugateGradient<SpMat > cgE;
-    cgE.setMaxIterations(1);
+    cgE.setMaxIterations(10);
     cgE.setTolerance( 0.000001 );
     cgE.compute(linearSys_vars.Le);  // update with Sparse matrix A
     XiEVector = cgE.solveWithGuess(rhs,v0);  // (rhs, guess)
